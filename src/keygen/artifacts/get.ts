@@ -14,7 +14,9 @@ export default async function get({ id }: GetProps): Promise<ArtifactResponse> {
     {
       method: "GET",
       headers: {
-        Prefer: "no-redirect, no-download",
+        // NOTE: intentionally omitting "no-download" so the response includes
+        // a presigned links.redirect for the Download button on this page.
+        Prefer: "no-redirect",
       },
     },
   )) as ArtifactResponse
